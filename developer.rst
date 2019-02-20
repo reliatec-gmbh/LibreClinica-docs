@@ -6,7 +6,7 @@ Information about LibreClinca development and contribution workflows. This docum
 Version Control
 ---------------
 
-Git version control system is used for tracking changes in LibreClinica project repositories. Those are hosted publicly via `RelliaTec GmbH GitHub <https://github.com/reliatec-gmbh/>`_ organisation. 
+Git version control system is used for tracking changes in LibreClinica project repositories. Those are hosted publicly via `ReliaTec GmbH GitHub <https://github.com/reliatec-gmbh/>`_ organisation. 
 
 Repository
 ----------
