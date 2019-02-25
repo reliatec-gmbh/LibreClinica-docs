@@ -6,12 +6,12 @@ Information about LibreClinca development and contribution workflows. This docum
 Version Control
 ---------------
 
-Git version control system is used for tracking changes in LibreClinica project repositories. Those are hosted publicly via `RelliaTec GmbH GitHub <https://github.com/reliatec-gmbh/>`_ organisation. 
+Git version control system is used for tracking changes in LibreClinica project repositories. Those are hosted publicly via `ReliaTec GmbH GitHub <https://github.com/reliatec-gmbh/>`_ organisation. 
 
 Repository
 ----------
 
-`LibreClinica <https://github.com/reliatec-gmbh/LibreClinica>`_ (origin) repository was created as a fork from `OpenClinica/OpenClinica <https://github.com/OpenClinica/OpenClinica>`_ (upstream) public repository. The idea is to maintain origin repository synchronisable with upstream as long as the upstream public version exists. This requires to define certain naming conventions in order to prevent naming collisions (for versions, branches and tags).
+`LibreClinica <https://github.com/reliatec-gmbh/LibreClinica>`_ (origin) repository was created as a fork from `OpenClinica <https://github.com/OpenClinica/OpenClinica>`_ (upstream) public repository. The idea is to maintain origin repository synchronisable with upstream as long as the upstream public version exists. This requires to define certain naming conventions in order to prevent naming collisions (for versions, branches and tags).
 
 Issue Management
 ----------------
@@ -43,7 +43,7 @@ There is a need to start with fresh versioning scheme for LibreClinica (independ
 
 * MAJOR.MINOR.PATCH
 
-In order to prevent conflicts with upstream branches proposed to to use the "lc-" prefix:
+In order to prevent conflicts with upstream branches proposed to use the "lc-" prefix:
 
 * lc-MAJOR.MINOR.PATCH
 
@@ -69,6 +69,4 @@ There was an idea to automate user interface testing with saucelabs (unit and in
 Documentation
 -------------
 
-`LibreClinica-docs <https://github.com/reliatec-gmbh/LibreClinica-docs>`_  
-
-`Read the Docs <https://readthedocs.org/>`_  
+`reStructuredText <https://en.wikipedia.org/wiki/ReStructuredText>`_ (.rst) lightweight markup language is proposed to be used for the porpose of documentation writing. The LibreClinica documentation source files reside in `LibreClinica-docs <https://github.com/reliatec-gmbh/LibreClinica-docs>`_  repository. This repository contains webhook to trigger the re-build of static HTML resources that are publicly hosted via `Read the Docs <https://readthedocs.org/>`_ (RTD) utilising RTD Sphinx Theme.
