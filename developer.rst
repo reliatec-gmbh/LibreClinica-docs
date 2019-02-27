@@ -69,4 +69,4 @@ There was an idea to automate user interface testing with saucelabs (unit and in
 Documentation
 -------------
 
-`reStructuredText <https://en.wikipedia.org/wiki/ReStructuredText>`_ (.rst) lightweight markup language is proposed to be used for the porpose of documentation writing. The LibreClinica documentation source files reside in `LibreClinica-docs <https://github.com/reliatec-gmbh/LibreClinica-docs>`_  repository. This repository contains webhook to trigger the re-build of static HTML resources that are publicly hosted via `Read the Docs <https://readthedocs.org/>`_ (RTD) utilising RTD Sphinx Theme.
+`reStructuredText <https://en.wikipedia.org/wiki/ReStructuredText>`_ (.rst) lightweight markup language is proposed to be used for the purpose of documentation writing. The LibreClinica documentation source files reside in `LibreClinica-docs <https://github.com/reliatec-gmbh/LibreClinica-docs>`_  repository. This repository contains a webhook to trigger the re-build of static HTML resources that are publicly hosted via `Read the Docs <https://readthedocs.org/>`_ (RTD) utilising RTD Sphinx Theme.
