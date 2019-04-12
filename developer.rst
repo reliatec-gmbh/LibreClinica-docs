@@ -18,23 +18,134 @@ Issue Management
 
 GitHub integrated issues management should be used to creates tickets before any code contributions. Tickets assigned to milestones that reflect the LibreClinica software versioning scheme.
 
-Branches
---------
+Main Branches
+-------------
 
-master
-^^^^^^
-
-This branch should not be used for development purposes but only for syncing with the upstream repository.
+Source code organisation is inspired by Vincent Driessen `git branching model <https://nvie.com/posts/a-successful-git-branching-model>`_ that promotes two main branches with an infinite lifetime (lc-master and lc-develop). In addition to above mentioned concept one more master branch exists that allows the syncing with upstream repository.
 
 lc-master
 ^^^^^^^^^
 
-This is a new default branch for origin repository. It's starting state is cloned from the release branch of upstream repository. (TODO: need to decide whether we start from upstream 3.14 or lesser).
+This branch represents the production ready state of code. No direct commits are permitted to the lc-master. Only merges from supporting branches (release or hotfix) are allowed. Every changes merged back into lc-master repository is considered as new release (that shell be tagged). The initial state of lc-master is cloned from the release branch of upstream repository (3.14).
+
+lc-develop
+^^^^^^^^^^
+
+This is a new default branch for origin repository. It tracks development changes for the next software release. This branch should be used for the purpose of continuous integration. Changes to lc-develop are introduced by merges from supporting branches (feature, release or hotfix).
+
+master
+^^^^^^
+
+This branch should not be used for development purposes but only for syncing with the upstream repository where development continues independently from LibreClinica.
+
+Supporting Branches
+-------------------
+
+Additional temporal branches are created from lc-develop or lc-master in order to introduce changes to the source code.
+
+feature branches
+^^^^^^^^^^^^^^^^
+
+===========  ==========  =================
+Branch from  Merge into  Naming convention
+===========  ==========  =================
+lc-develop   lc-develop  anything except master, lc-master, lc-develop, lc-release-\*, lc-hotfix-\*
+===========  ==========  =================
+
+.. code-block:: shell
+   :caption: Creating a feature branch from lc-develop
+
+   $ git checkout -b myfeature lc-develop
+
+
+.. code-block:: shell
+   :caption: Merging a feature branch on lc-develop
+
+   $ git checkout lc-develop
+   $ git merge --no-ff myfeature
+   $ git branch -d myfeature
+   $ git push origin lc-develop
+
+release branches
+^^^^^^^^^^^^^^^^
+
+===========  ========================  =================
+Branch from  Merge into                Naming convention
+===========  ========================  =================
+lc-develop   lc-develop and lc-master  lc-release-\*
+===========  ========================  =================
+
+.. code-block:: shell
+   :caption: Creating a release branch from lc-develop
+
+   $ git checkout -b lc-release-1.3.0 lc-develop
+   $ ./bump-version.sh 1.3.0
+   $ git commit -a -m "Bumped version number to 1.3.0"
+
+.. code-block:: shell
+   :caption: Merging a release branch on lc-master and tagging
+
+   $ git checkout lc-master
+   $ git merge --no-ff lc-release-1.3.0
+   $ git tag -a lc-1.3.0
+
+.. code-block:: shell
+   :caption: Merging a release branch on lc-develop
+
+   $ git checkout lc-develop
+   $ git merge --no-ff lc-release-1.3.0
+
+.. code-block:: shell
+   :caption: Removing a temporary release branch
+
+   $ git branch -d lc-release-1.3.0
+
+hotfix branches
+^^^^^^^^^^^^^^^
+
+===========  ========================  =================
+Branch from  Merge into                Naming convention
+===========  ========================  =================
+lc-master    lc-develop and lc-master  lc-hotfix-\*
+===========  ========================  =================
+
+.. code-block:: shell
+   :caption: Creating a hotfix branch from lc-master
+
+   $ git checkout -b lc-hotfix-1.3.1 lc-master
+   $ ./bump-version.sh 1.3.1
+   $ git commit -a -m "Bumped version number to 1.3.1"
+
+.. code-block:: shell
+   :caption: Fix the bug and commit the fix
+
+   $ git commit -m "Fixed severe production problem"
+
+.. code-block:: shell
+   :caption: Merging a hotfix branch on lc-master and tagging
+
+   $ git checkout lc-master
+   $ git merge --no-ff lc-hotfix-1.3.1
+   $ git tag -a lc-1.3.1
+
+.. code-block:: shell
+   :caption: Merging a hotfix branch on lc-develop
+
+   $ git checkout lc-develop
+   $ git merge --no-ff lc-hotfix-1.3.1
+
+
+.. note::  The one exception to the rule here is that, when a release branch currently exists, the hotfix changes need to be merged into that release branch, instead of develop.
+
+.. code-block:: shell
+   :caption: Removing a temporary hotfix branch
+
+   $ git branch -d lc-hotfix-1.3.1
 
 Tags
 ----
 
-Tags should be created for released LibreClinica versions (not branches).
+Tags should be created for released LibreClinica versions.
 
 Release Versioning
 ------------------
