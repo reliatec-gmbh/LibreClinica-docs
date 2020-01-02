@@ -46,7 +46,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'LibreClnica'
-copyright = u'2019, TBD'
+copyright = u'2020, TBD'
 author = u'TBD'
 
 # The version info for the project you're documenting, acts as replacement for
