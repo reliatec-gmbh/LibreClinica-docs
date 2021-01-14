@@ -1,5 +1,0 @@
-Administrator Documentation
-===========================
-
-PLACEHOLDER
-   
