@@ -23,7 +23,9 @@ Check the currently valid LibreClinica `system requirements <https://libreclinic
 Java
 ^^^^
 
-Download the supported version of OpenJDK and in order to install it unzip the archive to directory of your choice.
+Download the supported version of OpenJDK and in order to install it unzip the archive to directory of your choice.  
+
+*Currently LibreClinica still needs Java-8 to be compiled. We're working on it but in the meanwhile you need to use Java-8. Otherwise you will get errors like ``package javax.annotation does not exist``.*
 
 Tomcat
 ^^^^^^
